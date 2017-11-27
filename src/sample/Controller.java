@@ -52,67 +52,97 @@ public class Controller  {
     private int i=0;
     private int result=0;
     //initialisations variables
+    @FXML
+    public void action (ActionEvent event){
+        if(event.getSource()==n1){
 
-    //clique sur chiffres
-    public void chiffres(ActionEvent event){
-        clicc= ((Button) event.getSource()).getText();
-        inter=inter+clicc;
-        screen.setText(screen.getText()+clicc);
-        if (operator1!="" && i==1){
-            nombre1=Integer.parseInt(inter);
-            operator=operator1;
-            operator1="";
-            inter="";
-            System.out.println(nombre1);
-            System.out.println(nombre2);
+        	screen.setText(screen.getText()+"1");
+
+        }else if((event.getSource()==n2)){
+
+        	screen.setText(screen.getText()+"2");
+        }else if((event.getSource()==n3)){
+
+        	screen.setText(screen.getText()+"3");
+        }else if((event.getSource()==n4)){
+
+        	screen.setText(screen.getText()+"4");
+        }else if((event.getSource()==n5)){
+
+        	screen.setText(screen.getText()+"5");
+        }else if((event.getSource()==n6)){
+
+        	screen.setText(screen.getText()+"6");
+        }else if((event.getSource()==n7)){
+
+        	screen.setText(screen.getText()+"7");
+        }else if((event.getSource()==n8)){
+
+        	screen.setText(screen.getText()+"8");
+        }else if((event.getSource()==n9)){
+
+        	screen.setText(screen.getText()+"9");
+        }else if((event.getSource()==n0)){
+
+        	screen.setText(screen.getText()+"0");
         }
-        if (operator1=="="){
-            nombre2=Integer.parseInt(inter);
-            calculop();
-            System.out.println(nombre1);
-            System.out.println(nombre2);
+        else if((event.getSource()==c)){
+
+        	screen.setText(" ");
+
         }
+        else if((event.getSource()==add)){
+            data=Float.parseFloat(screen.getText());
+            operation=1;//addition
+            screen.setText(" ");
 
-    }
-
-
-
-    //clique sur operateurs
-    public void operateur(ActionEvent event){
-        clico=((Button) event.getSource()).getText();
-        screen.setText(screen.getText()+clico);
-        i=1;
-        operator1=clico;
-    }
-
-
-
-
-    //mettre les comptes a zero
-    public void resset(ActionEvent event){
-      clicc="";
-      clico="";
-      nombre1=0;
-         nombre2=0;
-         inter="";
-         operator="";
-         operator1="";
-        i=0;
-       result=0;
-       screen.setText("0");
-
-    }
-
-
-    //calcul des operations
-    public void calculop(){
-        switch (operator){
-            case "+": result=nombre1+nombre2;break;
-            case "-":result=nombre1-nombre2;break;
-            case "*":result=nombre1*nombre2;break;
-            case "/":result=nombre1/nombre2;break;
         }
-       screen.setText(screen.getText()+result);
-    }
+        else if((event.getSource()==sub)){
+            data=Float.parseFloat(screen.getText());
+            operation=2;//soust
+            screen.setText(" ");
 
+        }
+        else if((event.getSource()==mult)){
+            data=Float.parseFloat(screen.getText());
+            operation=3;//produit
+            screen.setText(" ");
+
+        }
+        else if((event.getSource()==div)){
+            data=Float.parseFloat(screen.getText());
+            operation=4;//devise
+            screen.setText(" ");
+
+        }
+        else if((event.getSource()==eq)){
+            Float secondOperand= Float.parseFloat(screen.getText());
+            switch (operation){
+                case 1:
+                    Float op= data+secondOperand;
+                    screen.setText(String.valueOf(op));
+                    break;
+                case 2:
+                     op= data-secondOperand;
+                     screen.setText(String.valueOf(op));
+                    break;
+                case 3:
+                    op= data*secondOperand;
+                    screen.setText(String.valueOf(op));
+                    break;
+                case 4:
+                    op=0f;
+                    try{
+                    op= data/secondOperand;
+                    } catch (ArithmeticException  e){
+                    	screen.setText("erreur");
+                    }
+                    screen.setText(String.valueOf(op));
+                    break;
+
+            }
+
+        }   
+
+    }
 }
