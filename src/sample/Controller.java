@@ -53,12 +53,16 @@ public class Controller  {
     private float data;
     private int datai;
     private boolean vir=false;
+    private int z=0;
 
 
 
     //initialisations variables
     @FXML
     public void action (ActionEvent event){
+        if (z==0){
+            screen.setText("");
+        }
         if(event.getSource()==n1){
 
             screen.setText(screen.getText()+"1");
@@ -91,7 +95,7 @@ public class Controller  {
 
             screen.setText(screen.getText()+"0");
         }
-        else if (event.getSource()==virgule){
+        else if (event.getSource()==virgule && vir==false){
             screen.setText(screen.getText()+".");
             vir=true;
 
@@ -100,6 +104,7 @@ public class Controller  {
 
             screen.setText("0");
             vir=false;
+            z=-1;
 
         }
         else if((event.getSource()==add )){
@@ -197,6 +202,7 @@ public class Controller  {
             }
 
         }
+      z++;
 
     }
 }
